@@ -1,6 +1,5 @@
 {
   "name": "veaury",
-  "private": false,
   "version": "2.6.2",
   "description": "Use React in Vue3 and Vue3 in React, And as perfect as possible!",
   "main": "dist/veaury.umd.js",
@@ -80,5 +79,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.3"
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }
