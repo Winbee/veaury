@@ -67,6 +67,11 @@ export default createRouter({
       // component: () => import('../pages/pureReactInVue')
     },
     {
+      name: 'pureReactInVueBug',
+      path: '/pureReactInVueBug',
+      component: () => import('../pages/pureReactInVueBug')
+    },
+    {
       name: 'watchref',
       path: '/watchref',
       component: watchref,

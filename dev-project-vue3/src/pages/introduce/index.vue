@@ -12,6 +12,7 @@
   <router-link to="/crossingProvider">CrossingProvider</router-link>
   <router-link to="/pureReactInVue">pureReactInVue</router-link>
   <router-link to="/watchref">watchref</router-link>
+  <router-link to="/pureReactInVueBug">pureReactInVue Bug</router-link>
 </template>
 
 <script>
