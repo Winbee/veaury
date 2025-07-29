@@ -446,7 +446,7 @@ export default function applyReactInVue(component, options = {}) {
         // this.__veauryMountReactComponent__(true, false, extraData)
         this.__veauryReactInstance__ && this.__veauryReactInstance__.setState(extraData)
       },
-      __veauryMountReactComponent__(update, updateType, extraData = {}) {
+      async __veauryMountReactComponent__(update, updateType, extraData = {}) {
         const hashMap = {}
         const hashList = []
         // get vue component scoped hash
@@ -506,6 +506,12 @@ export default function applyReactInVue(component, options = {}) {
         }
         // component creation
         if (!update) {
+          // Create a promise to maintain whether the react component is bound
+          let tempResolve
+          this.__reactBoundedPromise__ = new Promise((resolve) => {
+            tempResolve = resolve
+          })
+          this.__reactBoundedPromise__.resolve = tempResolve
           compareLast.slot()
           compareLast.attrs()
           const Component = createReactContainer(component, options, this)
@@ -521,7 +527,10 @@ export default function applyReactInVue(component, options = {}) {
             hashList={hashList}
             {...(this.$attrs.style ? { style: this.$attrs.style } : {})}
             // style={this.$attrs.style}
-            ref={(ref) => (this.__veauryReactInstance__ = ref)}
+            ref={(ref) => {
+              this.__veauryReactInstance__ = ref
+              this.__reactBoundedPromise__.resolve(true)
+            }}
           />
 
           const container = this.$refs.react
@@ -579,8 +588,11 @@ export default function applyReactInVue(component, options = {}) {
 
         } else {
 
+          // Make sure the react component is bound
+          await this.__reactBoundedPromise__
+
           const setReactState = () => {
-            this.__veauryReactInstance__ && this.__veauryReactInstance__.setState((prevState) => {
+            this.__veauryReactInstance__.setState((prevState) => {
               // Clear the previous 'state', preventing merging
               Object.keys(prevState).forEach((key) => {
                 if (options.isSlots && key === 'children') return

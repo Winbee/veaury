@@ -1192,8 +1192,7 @@ The directories `dev-project-react` and `dev-project-vue3` in the project are th
 > In the `config/webpack.config.js` of the React project and the `vue.config.js` of the Vue project, you can uncomment the `veaury` in `alias` to develop the source code of `veaury`
 
 > [!TIP]  
-> This project can only be installed using `yarn`.
-> **Setup:** Run the command `npm run setup` in the root directory of the main project to install the main project and two subprojects
+> **Setup:** Run the command `npm run setup:npm` in the root directory of the main project to install the main project and two subprojects
 
 > [!TIP]  
 > **Develop:** Run the commands `npm run dev:vue` and `npm run dev:react` in the root directory of the main project for development  
