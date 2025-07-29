@@ -1125,7 +1125,6 @@ index 3366f5a..b9eacc6 100644
 本项目中的`dev-project-react`和`dev-project-vue3`目录是`veaury`开发环境的基础项目，分别由`create-react-app`和`@vue/cli`创建的两个初始项目。
 > **Note:** 在react项目中的`config/webpack.config.js`以及vue项目中的`vue.config.js`里，可以找到webpack的alias别名配置，将`veaury`的别名注释解开，就可以对根项目中`src`目录里的`veaury`源代码进行开发调试了
 >
-> 只能使用`yarn`进行安装
-> **Setup:** 在主项目的根目录下运行命令行`npm run setup` 可以整体安装主项目和两个调试用的子项目
+> **Setup:** 在主项目的根目录下运行命令行`npm run setup:npm` 可以整体安装主项目和两个调试用的子项目
 >
 > **Develop:** 在主项目的根目录下运行命令行`npm run dev:vue` 以及 `npm run setup:npm`就可以对子项目进行开发调试
